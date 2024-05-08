@@ -1,0 +1,126 @@
+{
+	"info": {
+		"_postman_id": "30861a71-658d-402a-bcea-efd19339ed08",
+		"name": "Lemon-Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24342864"
+	},
+	"item": [
+		{
+			"name": "Health Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/healths",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"healths"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check Eligibility",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"numeroDoDocumento\": \"14041737706\",\r\n    \"tipoDeConexao\": \"bifasico\",\r\n    \"classeDeConsumo\": \"comercial\",\r\n    \"modalidadeTarifaria\": \"convencional\",\r\n    \"historicoDeConsumo\": [\r\n        3878, // mes atual\r\n        9760, // mes anterior\r\n        5976, // 2 meses atras\r\n        2797, // 3 meses atras\r\n        2481, // 4 meses atras\r\n        5731, // 5 meses atras\r\n        7538, // 6 meses atras\r\n        4392, // 7 meses atras\r\n        7859, // 8 meses atras\r\n        4160, // 9 meses atras\r\n        6941, // 10 meses atras\r\n        4597 // 11 meses atras\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/check/eligibility",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"check",
+						"eligibility"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Not Eligibility",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"numeroDoDocumento\": \"14041737706\",\r\n  \"tipoDeConexao\": \"bifasico\",\r\n  \"classeDeConsumo\": \"rural\",\r\n  \"modalidadeTarifaria\": \"verde\",\r\n  \"historicoDeConsumo\": [\r\n    3878, // mes atual\r\n    9760, // mes anterior\r\n    5976, // 2 meses atras\r\n    2797, // 3 meses atras\r\n    2481, // 4 meses atras\r\n    5731, // 5 meses atras\r\n    7538, // 6 meses atras\r\n    4392, // 7 meses atras\r\n    7859, // 8 meses atras\r\n    4160 // 9 meses atras\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/v1/check/eligibility",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"check",
+								"eligibility"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "Not Eligibility - MinConsumption",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"numeroDoDocumento\": \"14041737706\",\r\n  \"tipoDeConexao\": \"bifasico\",\r\n  \"classeDeConsumo\": \"comercial\",\r\n  \"modalidadeTarifaria\": \"branca\",\r\n  \"historicoDeConsumo\": [\r\n    200, // mes atual\r\n    150, // mes anterior\r\n    110, // 2 meses atras\r\n    200, // 3 meses atras\r\n    101 // 4 meses atras\r\n\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/v1/check/eligibility",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"check",
+								"eligibility"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	]
+}
